@@ -1,0 +1,30 @@
+spring:
+  config:
+    import: optional:classpath:application-secret.yml
+  application:
+    name: mini-mes
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/factorydata?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+jwt:
+  secret: ${JWT_SECRET:}
+  expiration: 86400000  # 24小时
+
+deepseek:
+  api-key: ${DEEPSEEK_API_KEY:}
+  base-url: https://api.deepseek.com
+  model: deepseek-chat
+
+server:
+  port: 8080
